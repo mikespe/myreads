@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+//import Books from './Books'
 
 class Mainpage extends Component {
 render() {
@@ -15,6 +16,7 @@ render() {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   book
+                  {console.log(this.props.books)}
                 </ol>
               </div>
             </div>
