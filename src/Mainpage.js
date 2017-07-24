@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-//import Books from './Books'
+import Books from './Books'
 
 class Mainpage extends Component {
 render() {
@@ -15,7 +15,11 @@ render() {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  book
+                  {this.props.books.map((book) => (
+                    <li key={book.id}>
+                    <Books/>
+                    </li>
+                  ))}
                   {console.log(this.props.books)}
                 </ol>
               </div>
@@ -33,7 +37,6 @@ render() {
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   book
-
                 </ol>
               </div>
             </div>
