@@ -17,7 +17,8 @@ render() {
                 <ol className="books-grid">
                   {this.props.books.map((book) => (
                     <li key={book.id}>
-                    <Books/>
+                    <Books
+                      backgroundimg={book.imageLinks.thumbnail}/>
                     </li>
                   ))}
                   {console.log(this.props.books)}
