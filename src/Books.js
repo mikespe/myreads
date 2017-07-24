@@ -16,8 +16,8 @@ function Books(books) {
               </select>
             </div>
           </div>
-          <div className="book-title">Oh, the Places You'll Go!</div>
-          <div className="book-authors">Seuss</div>
+          <div className="book-title">{books.title}</div>
+          <div className="book-authors">{books.author}</div>
         </div>
     )
 }

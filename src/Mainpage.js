@@ -18,7 +18,10 @@ render() {
                   {this.props.books.map((book) => (
                     <li key={book.id}>
                     <Books
-                      backgroundimg={book.imageLinks.thumbnail}/>
+                      backgroundimg={book.imageLinks.thumbnail}
+                      title={book.title}
+                      author={book.authors[0]}
+                      />
                     </li>
                   ))}
                   {console.log(this.props.books)}
