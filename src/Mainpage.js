@@ -4,6 +4,9 @@ import Books from './Books'
 
 class Mainpage extends Component {
 render() {
+  let crreading = this.props.books.filter((book) => (
+    book.shelf == 'currentlyReading'
+  ))
   return (
       <div className="list-books">
         <div className="list-books-title">
@@ -15,7 +18,7 @@ render() {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.props.books.map((book) => (
+                  {crreading.map((book) => (
                     <li key={book.id}>
                     <Books
                       backgroundimg={book.imageLinks.thumbnail}
@@ -24,7 +27,6 @@ render() {
                       />
                     </li>
                   ))}
-                  {console.log(this.props.books)}
                 </ol>
               </div>
             </div>
