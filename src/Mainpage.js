@@ -7,6 +7,12 @@ render() {
   let crreading = this.props.books.filter((book) => (
     book.shelf == 'currentlyReading'
   ))
+  let wtreading = this.props.books.filter((book) => (
+    book.shelf == 'wantToRead'
+  ))
+  let read = this.props.books.filter((book) => (
+    book.shelf == 'read'
+  ))
   return (
       <div className="list-books">
         <div className="list-books-title">
@@ -34,7 +40,15 @@ render() {
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                book
+                  {wtreading.map((book) => (
+                    <li key={book.id}>
+                    <Books
+                      backgroundimg={book.imageLinks.thumbnail}
+                      title={book.title}
+                      author={book.authors[0]}
+                      />
+                    </li>
+                  ))}
                 </ol>
               </div>
             </div>
@@ -42,7 +56,15 @@ render() {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  book
+                  {read.map((book) => (
+                    <li key={book.id}>
+                    <Books
+                      backgroundimg={book.imageLinks.thumbnail}
+                      title={book.title}
+                      author={book.authors[0]}
+                      />
+                    </li>
+                  ))}
                 </ol>
               </div>
             </div>
