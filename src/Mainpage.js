@@ -27,6 +27,7 @@ render() {
                   {crreading.map((book) => (
                     <li key={book.id}>
                     <Books
+                      changebook={this.props.changebook}
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
                       author={book.authors[0]}
@@ -43,6 +44,7 @@ render() {
                   {wtreading.map((book) => (
                     <li key={book.id}>
                     <Books
+                      changebook={this.props.changebook}
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
                       author={book.authors[0]}
@@ -59,6 +61,7 @@ render() {
                   {read.map((book) => (
                     <li key={book.id}>
                     <Books
+                      changebook={this.props.changebook}
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
                       author={book.authors[0]}

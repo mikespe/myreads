@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 
-function Books(books) {
+class Books extends Component {
+  render() {
     return (
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: `url(${books.backgroundimg})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: `url(${this.props.backgroundimg})` }}></div>
             <div className="book-shelf-changer">
-              <select>
+              <select onChange={() => this.props.changebook()}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -16,10 +16,11 @@ function Books(books) {
               </select>
             </div>
           </div>
-          <div className="book-title">{books.title}</div>
-          <div className="book-authors">{books.author}</div>
+          <div className="book-title">{this.props.title}</div>
+          <div className="book-authors">{this.props.author}</div>
         </div>
     )
+}
 }
 
 export default Books

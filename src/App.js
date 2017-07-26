@@ -17,12 +17,17 @@ class BooksApp extends React.Component {
     })
   }
 
+  bookchange() {
+    console.log('it worked!')
+  }
+
   render() {
     return (
       <div className="app">
         {console.log(this.state.books)}
         <Route exact path='/' render={() => (
           <Mainpage
+            changebook={this.bookchange}
             books={this.state.books}
             />
         )}/>
