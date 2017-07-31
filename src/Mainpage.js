@@ -31,6 +31,8 @@ render() {
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
                       author={book.authors[0]}
+                      id={book.id}
+                      shelf={book.shelf}
                       />
                     </li>
                   ))}
@@ -48,6 +50,8 @@ render() {
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
                       author={book.authors[0]}
+                      id={book.id}
+                      shelf={book.shelf}
                       />
                     </li>
                   ))}
@@ -65,6 +69,8 @@ render() {
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
                       author={book.authors[0]}
+                      id={book.id}
+                      shelf={book.shelf}
                       />
                     </li>
                   ))}

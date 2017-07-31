@@ -17,8 +17,12 @@ class BooksApp extends React.Component {
     })
   }
 
-  bookchange() {
-    console.log('it worked!')
+  mainshelfchange(e) {
+    let book = this;
+    let specificbook = this.id;
+    let newshelf = e.target.value;
+    console.log(specificbook)
+    console.log(newshelf)
   }
 
   render() {
@@ -27,7 +31,7 @@ class BooksApp extends React.Component {
         {console.log(this.state.books)}
         <Route exact path='/' render={() => (
           <Mainpage
-            changebook={this.bookchange}
+            changebook={this.mainshelfchange}
             books={this.state.books}
             />
         )}/>
