@@ -7,9 +7,14 @@ import Searchpage from './Searchpage'
 import Mainpage from './Mainpage'
 
 class BooksApp extends React.Component {
-  state = {
-    books: []
-  }
+  constructor(props) {
+    super(props);
+      this.state = {
+        books: []
+      }
+    this.mainshelfchange = this.mainshelfchange.bind(this)
+}
+
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
@@ -18,17 +23,27 @@ class BooksApp extends React.Component {
   }
 
   mainshelfchange(e) {
-    let book = this;
-    let specificbook = this.id;
-    let newshelf = e.target.value;
-    console.log(specificbook)
-    console.log(newshelf)
+    let specificbook = e.currentTarget.className
+    let newshelf = e.target.value
+    BooksAPI.update(specificbook, newshelf).then((e) => {
+      this.setState((state) => {
+        books: state.books.map((book) => {
+          if(book.id == specificbook) {
+            book.shelf = newshelf
+            console.log('success')
+            return book
+          } else {
+            return book
+          }
+        })
+      })
+    })
+    return newshelf
   }
 
   render() {
     return (
       <div className="app">
-        {console.log(this.state.books)}
         <Route exact path='/' render={() => (
           <Mainpage
             changebook={this.mainshelfchange}

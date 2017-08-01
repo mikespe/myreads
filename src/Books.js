@@ -7,8 +7,8 @@ class Books extends Component {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: `url(${this.props.backgroundimg})` }}></div>
             <div className="book-shelf-changer">
-              <form onChange={(e) => this.props.changebook(e)}>
-              <select>
+              <form className={this.props.id} onChange={(e) => this.props.changebook(e)}>
+              <select defaultValue={this.props.shelf}>
                 <option value="none" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
