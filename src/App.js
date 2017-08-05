@@ -38,7 +38,6 @@ class BooksApp extends React.Component {
         })
       })
     })
-    return newshelf
   }
 
   render() {
