@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import serializeForm from 'form-serialize'
 
 class Searchpage extends Component {
   state = {
     search: ''
   }
+
   handleChange = (event) => {
     this.setState({search: event.target.value})
   }
+
+  searchsubmit = (e) => {
+    e.preventDefault()
+    const values = e.target.query.value
+    console.log(values)
+  }
+
   render() {
     return (
       <div className="search-books">
@@ -25,12 +34,17 @@ class Searchpage extends Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
+            <form
+              onSubmit={this.searchsubmit}
+              >
             <input
               type="text"
               placeholder="Search by title or author"
               value={this.state.search}
-              onChange={(e) => this.handleChange(e)}/>
-
+              onChange={(e) => this.handleChange(e)}
+              name='query'
+              />
+            </form>
           </div>
         </div>
         <div className="search-books-results">
