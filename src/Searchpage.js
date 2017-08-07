@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import serializeForm from 'form-serialize'
+import * as BooksAPI from './BooksAPI'
+
 
 class Searchpage extends Component {
   state = {
-    search: ''
+    search: '',
+    searchbooks: []
   }
 
   handleChange = (event) => {
@@ -13,8 +16,12 @@ class Searchpage extends Component {
 
   searchsubmit = (e) => {
     e.preventDefault()
-    const values = e.target.query.value
-    console.log(values)
+    const searchvalue = e.target.query.value
+    const maxResults = 5
+    console.log(searchvalue)
+    BooksAPI.search(searchvalue, maxResults).then((data => {
+      console.log(data)
+    }))
   }
 
   render() {
