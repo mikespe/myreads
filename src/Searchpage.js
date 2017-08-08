@@ -11,15 +11,21 @@ class Searchpage extends Component {
     searchbooks: []
   }
 
-  handleChange = (event) => {
-    this.setState({search: event.target.value})
-  }
-
-  searchsubmit = (e) => {
-    e.preventDefault()
-    const searchvalue = e.target.query.value
+  handleChange = (e) => {
+    this.setState({search: e.target.value})
+    const searchvalue = e.target.value
     const maxResults = 5
+    let bookstate = this.props.books
+    console.log(bookstate)
     BooksAPI.search(searchvalue, maxResults).then((data => {
+      console.log(data)
+      for (var i = 0; i < bookstate.length; i++) {
+        for (var j = 0; j < data.length; j++) {
+          if (bookstate[i].id == data[j].id) {
+            data[j].shelf = bookstate[i].shelf
+        }
+    }
+}
       this.setState({ searchbooks: data })
     }))
   }
@@ -41,9 +47,6 @@ class Searchpage extends Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <form
-              onSubmit={this.searchsubmit}
-              >
             <input
               type="text"
               placeholder="Search by title or author"
@@ -51,7 +54,6 @@ class Searchpage extends Component {
               onChange={(e) => this.handleChange(e)}
               name='query'
               />
-            </form>
           </div>
         </div>
         <div className="search-books-results">
