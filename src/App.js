@@ -32,11 +32,8 @@ class BooksApp extends React.Component {
       let bookmatch = this.state.books.filter((book) => (
         book.id == specificbook
       ))
-      console.log(bookmatch.length)
       if(bookmatch.length == 0) {
         let newstate = this.state.books.push(newbook)
-        console.log(newstate)
-        console.log(newbook)
         this.setState({ newstate })
       }
     })
