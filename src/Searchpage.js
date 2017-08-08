@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import serializeForm from 'form-serialize'
 import * as BooksAPI from './BooksAPI'
+import Books from './Books'
 
 
 class Searchpage extends Component {
@@ -18,9 +19,8 @@ class Searchpage extends Component {
     e.preventDefault()
     const searchvalue = e.target.query.value
     const maxResults = 5
-    console.log(searchvalue)
     BooksAPI.search(searchvalue, maxResults).then((data => {
-      console.log(data)
+      this.setState({ searchbooks: data })
     }))
   }
 
@@ -55,8 +55,20 @@ class Searchpage extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          {this.state.search}
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+            {this.state.searchbooks.map((book) => (
+              <li key={book.id}>
+              <Books
+                changebook={this.props.changebook}
+                backgroundimg={book.imageLinks.thumbnail}
+                title={book.title}
+                author={book.authors}
+                id={book.id}
+                shelf={book.shelf}
+                />
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
       )

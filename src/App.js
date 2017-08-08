@@ -12,6 +12,7 @@ class BooksApp extends React.Component {
       this.state = {
         books: []
       }
+      let self = this
     this.mainshelfchange = this.mainshelfchange.bind(this)
 }
 
@@ -25,12 +26,26 @@ class BooksApp extends React.Component {
   mainshelfchange(e) {
     let specificbook = e.currentTarget.className
     let newshelf = e.target.value
+    let thisbook = e.target.parentNode
+
+    BooksAPI.get(specificbook).then((newbook) => {
+      let bookmatch = this.state.books.filter((book) => (
+        book.id == specificbook
+      ))
+      console.log(bookmatch.length)
+      if(bookmatch.length == 0) {
+        let newstate = this.state.books.push(newbook)
+        console.log(newstate)
+        console.log(newbook)
+        this.setState({ newstate })
+      }
+    })
+
     BooksAPI.update(specificbook, newshelf).then((e) => {
       this.setState((state) => {
         books: state.books.map((book) => {
           if(book.id == specificbook) {
             book.shelf = newshelf
-            console.log('success')
             return book
           } else {
             return book
@@ -51,7 +66,9 @@ class BooksApp extends React.Component {
         )}/>
 
       <Route path='/searchpage' render={() => (
-        <Searchpage/>
+        <Searchpage
+          changebook={this.mainshelfchange}
+          books={this.state.books}/>
       )}/>
       </div>
     )

@@ -30,7 +30,7 @@ render() {
                       changebook={this.props.changebook}
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
-                      author={book.authors[0]}
+                      author={book.authors}
                       id={book.id}
                       shelf={book.shelf}
                       />
@@ -49,7 +49,7 @@ render() {
                       changebook={this.props.changebook}
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
-                      author={book.authors[0]}
+                      author={book.authors}
                       id={book.id}
                       shelf={book.shelf}
                       />
@@ -68,7 +68,7 @@ render() {
                       changebook={this.props.changebook}
                       backgroundimg={book.imageLinks.thumbnail}
                       title={book.title}
-                      author={book.authors[0]}
+                      author={book.authors}
                       id={book.id}
                       shelf={book.shelf}
                       />
