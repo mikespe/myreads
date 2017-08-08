@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Books from './Books'
+import PropTypes from 'prop-types'
+
 
 class Mainpage extends Component {
+  static propTypes = {
+    changebook: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired
+  }
 render() {
   let crreading = this.props.books.filter((book) => (
     book.shelf == 'currentlyReading'

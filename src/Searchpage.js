@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom'
 import serializeForm from 'form-serialize'
 import * as BooksAPI from './BooksAPI'
 import Books from './Books'
-
+import PropTypes from 'prop-types'
 
 class Searchpage extends Component {
+  static propTypes = {
+    changebook: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired
+  }
   state = {
     search: '',
     searchbooks: []
@@ -16,9 +20,7 @@ class Searchpage extends Component {
     const searchvalue = e.target.value
     const maxResults = 5
     let bookstate = this.props.books
-    console.log(bookstate)
     BooksAPI.search(searchvalue, maxResults).then((data => {
-      console.log(data)
       for (var i = 0; i < bookstate.length; i++) {
         for (var j = 0; j < data.length; j++) {
           if (bookstate[i].id == data[j].id) {
